@@ -11,8 +11,8 @@ const {requireAuth}=require('@clerk/express')
 //API
 authorApp.post('/author',expressasynchandler(createuserorauthor))
 authorApp.post('/article',expressasynchandler(async (req,res)=>{
-//get new article obj from req
- const newArticleObj=req.body;
+  //get new article obj from req
+  const newArticleObj=req.body;
   const newArticle=new Article(newArticleObj);
   const articleObj=await newArticle.save();
   res.status(201).send({

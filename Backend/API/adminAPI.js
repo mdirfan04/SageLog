@@ -15,7 +15,7 @@ modifiedArticle.isArticleActive = false;
 const response= await Article.findOneAndUpdate(
   { articleId: articleId },
   { ...modifiedArticle },
-  { returnDocument: "after" } // Use "after" to get the updated document
+  { returnDocument: "after" }
 );
 
 res.status(200).json({
@@ -29,9 +29,9 @@ adminApp.put('/comments/block/:commentId', expressasynchandler(async (req, res) 
       const commentId = req.params.commentId;
 
       const response = await Article.findOneAndUpdate(
-          { "comments.commentId": commentId },  // Find comment inside comments array
-          { $set: { "comments.$.isCommentActive": false } },  // Update only the matched comment
-          { new: true } // Returns updated document
+          { "comments.commentId": commentId },
+          { $set: { "comments.$.isCommentActive": false } },
+          { new: true }
       );
 
       if (!response) {
